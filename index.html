@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <div class="container">
+      <form action="" id="form">
+        <input
+          type="search"
+          name=""
+          id="search-input"
+          class="search"
+          placeholder="Type a city"
+        />
+        <input type="submit" value="Search" id="submit" class="submit" />
+        <input
+          type="submit"
+          value="Current"
+          id="current"
+          class="submit current"
+        />
+      </form>
+      <h1 id="input-value"></h1>
+      <p>
+        <span id="day" class="day">Tuesday</span>
+        <span id="time" class="time">9:03</span>
+      </p>
+      <p id="weather"></p>
+      <div class="temperature">
+        <h2>
+          <span id="temperature"></span>
+          <sup class="celsius">℃</sup>
+        </h2>
+        <div class="temperature-level">
+          <p class="humidity">
+            Humidity: <span id="humidity"></span><span>%</span>
+          </p>
+          <p class="wind">
+            Wind:
+            <span id="wind"> </span>
+            <span>km/h</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
