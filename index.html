@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
    <div class="container">
@@ -15,6 +17,7 @@
           id="search-input"
           class="search"
           placeholder="Type a city"
+          autofocus
         />
         <input type="submit" value="Search" id="submit" class="submit" />
         <input
@@ -29,7 +32,7 @@
         <span id="day" class="day">Tuesday</span>
         <span id="time" class="time">9:03</span>
       </p>
-      <p id="weather"></p>
+      <p id="weather" class="weather"></p>
       <div class="temperature">
         <h2>
           <span id="temperature"></span>

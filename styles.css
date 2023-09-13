@@ -1,32 +1,99 @@
+:root {
+  --primary-color: #2fb3e7;
+  --secondary-color: #87ceeb;
+}
 body {
+  background: var(--secondary-color);
   font-family: sans-serif;
+  color: white;
+  margin: 0;
+  overflow: hidden;
 }
-.container{
-  margin: auto; 
-  width: 80%;
-  padding: 10px;
-  border: 2px solid; 
-  border-radius: 3px;
-
+.container {
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid;
 }
-h1{
+h1 {
   text-transform: capitalize;
+  text-align: center;
 }
-h2{
+h2 {
   font-weight: 400;
   display: flex;
   justify-content: center;
 }
-#temperature{
+#temperature {
   font-size: 3rem;
 }
-sup{
+sup {
   font-size: 16px;
   margin: 10px 0 0 0;
 }
-.temperature-level{
-  display:  flex;
+.temperature-level {
+  display: flex;
   font-size: 10px;
   justify-content: center;
   gap: 10px;
+}
+form {
+  display: flex;
+  width: fit-content;
+  /* -moz-fit-content: fit-content; */
+  gap: 3px;
+  margin-top: 10px;
+  border: 2px solid var(--primary-color);
+  border-radius: 3px;
+}
+input {
+  color: var(--primary-color);
+  padding: 10px;
+  outline-color: var(--primary-color);
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 3px 5px var(--primary-color);
+}
+.submit {
+  border-radius: 3px;
+}
+::placeholder {
+  color: var(--primary-color);
+  opacity: 0.7;
+}
+
+.day,
+.time {
+  font-size: 10px;
+}
+@media screen and (min-width: 500px) {
+  .container {
+    display: block;
+    max-width: 600px;
+    height: auto;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px solid white;
+    margin: 20px auto;
+  }
+  form {
+    width: 100%;
+    /* justify-content: space-between; */
+  }
+  input {
+  }
+  input:not(.submit) {
+    flex: 1;
+    /* display: inline-block; */
+    /* width: 60%; */
+  }
+  .submit {
+    padding: 10px 30px;
+    text-align: center;
+    cursor: pointer;
+  }
+  #temperature {
+    font-size: 4rem;
+  }
 }
