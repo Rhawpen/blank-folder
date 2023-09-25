@@ -1,92 +1,188 @@
 :root {
-  --primary-color: #2fb3e7;
-  --secondary-color: #87ceeb;
+  --sunny-day: #87CEEB;
+  --rainy-day: #808080;
+  --cloudy-day: #CCCCCC;
+  --cloudy-day-text: #333333;
+  --partly-cloudy-day: #B0C4DE;
+  --night-background: #191970;
+  --celsius: #008000;
+  --fahrenheit: #FF0000;
+  --forecast-bg: #B79363;
+
 }
 body {
-  background: var(--secondary-color);
-  font-family: sans-serif;
-  color: white;
+  background: url('images/blue-sky.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  font-family: arial;
   margin: 0;
   overflow: hidden;
 }
 .container {
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   padding: 15px;
   border-radius: 5px;
-  border: 2px solid;
-}
-h1 {
-  text-transform: capitalize;
   text-align: center;
 }
-h2 {
-  font-weight: 400;
+ul{
+  list-style: none;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 24px;
+  text-transform: capitalize;
+}
+p{
+  margin-bottom: 0;
+}
+strong{
   display: flex;
   justify-content: center;
-}
-#temperature {
-  font-size: 3rem;
+  margin-left: 2rem;
 }
 sup {
   font-size: 16px;
-  margin: 10px 0 0 0;
+  margin-top: 15px;
 }
-.temperature-level {
-  display: flex;
-  font-size: 10px;
-  justify-content: center;
-  gap: 10px;
+a{
+  text-decoration: none;
+  color: #000;
+  cursor: default;
+
+}
+.weather-report{
+  margin-top: 10px;
+}
+.city{
+  margin: 10px 0 10px;
+}
+.description{
+  font-size: 12px;
+}
+.description::first-letter{
+  text-transform: capitalize;
+}
+.weather-icon img{
+  margin: 10px 0;
+  width: 150px;
+}
+.temp{
+  font-size: 64px;
+  color: rgba(255, 0, 0, 0.725);
+}
+.active{
+  color: #551a8b;
+}
+.active:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.weather-temperature{
+  font-weight: 500;
 }
 form {
   display: flex;
-  gap: 3px;
-  margin-top: 10px;
-  border: 2px solid var(--primary-color);
-  border-radius: 3px;
+  margin-top: 40px;
+  border-radius: 5px;
+  background: rgba(183, 147, 99, 0.2);
+  border-bottom: 1px solid;
 }
-input {
-  color: var(--primary-color);
+input, button {
   padding: 10px;
-  outline-color: var(--primary-color);
+  outline: none;
   border: none;
-  border-radius: 3px;
-  box-shadow: 0px 3px 5px var(--primary-color);
+}
+input{
+  background: none;
+  font-size: 20px;
+  text-align: center;
+  flex: 1;
 }
 .submit {
-  border-radius: 3px;
+  font-size: 16px;
+  background: #B3A9AA;
+  color: black;
+  /* border-left: 2px solid var(--sunny-day); */
+  border-left: #024CA5;
+  /* color: var(--sunny-day); */
+
 }
 ::placeholder {
-  color: var(--primary-color);
-  opacity: 0.7;
+  color: #412B22;
+  opacity: 0.6;
 }
 
 .day,
 .time {
-  font-size: 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+#forecast{
+  display: block;
+  background: var(--forecast-bg);
+  margin: 0 auto;
+  border-radius: 10px;
 }
 @media screen and (min-width: 500px) {
   .container {
-    display: block;
-    max-width: 600px;
-    height: auto;
-    color: white;
-    border-radius: 20px;
-    padding: 10px;
-    border: 2px solid white;
-    margin: 20px auto;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: 0;
+    margin: 0;
   }
-  form {
-    width: 100%;
+  nav{
+    background: rgba(2, 57, 135, 0.9);
+    border: 3px solid #023987;
+    height: 100vh;
   }
-  input:not(.submit) {
+  sup{
+    color: #fff;
+    font-size: 20px;
+  }
+  a{
+    font-weight: 600;
+    color: #fff;
+
+    
+  }
+  .temp{
+  font-size: 5rem;
+  color: #fff;
+  }
+  .active{
+    color: #EC6E4C;
+}
+  .weather-report{
     flex: 1;
+    align-self: flex-end;
+    padding: 15px;
+    background: rgba(52, 27, 19, 0.2);
+
+  }
+  .wrapper{
+    display: flex;
+    justify-content: space-between;
+  }
+  .temperature{
+    text-align: center;
+    align-self: center;
+  }
+  .city{
+    font-size: 30px;
   }
   .submit {
     padding: 10px 30px;
     text-align: center;
     cursor: pointer;
   }
-  #temperature {
-    font-size: 4rem;
+  .weather-icon img{
+    width: 200px;
+    height: 200px;
   }
 }
