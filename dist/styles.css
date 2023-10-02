@@ -119,10 +119,7 @@ input{
   font-size: 16px;
   background: #B3A9AA;
   color: black;
-  /* border-left: 2px solid var(--sunny-day); */
   border-left: #024CA5;
-  /* color: var(--sunny-day); */
-
 }
 ::placeholder {
   color: #412B22;
@@ -136,9 +133,20 @@ input{
 }
 #forecast{
   display: block;
-  background: var(--forecast-bg);
   margin: 0 auto;
   border-radius: 10px;
+  margin-top: 15px;
+}
+#forecast > div > ul{
+  display: flex;
+}
+#forecast > div > ul > li{
+  flex: 1;
+}
+.forecast-icon img{
+  width: 50px;
+  position: relative;
+  bottom: 10px;
 }
 @media screen and (min-width: 500px) {
   .container {
@@ -196,5 +204,17 @@ input{
   .weather-icon img{
     width: 200px;
     height: 200px;
+  }
+  #forecast{
+    margin-top: 120px;
+  }
+  #forecast > div > ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px;
+  }
+  #forecast > div > ul > li{
+    margin-top: 10px;
+    border-bottom: 2px solid #EC6E4C;
   }
 }

@@ -1,21 +1,49 @@
 "use strict";
 
-var apiKey = "2db5d5b656f561f30006eb6878ed720d";
+var apiKey = "ff304a92t9c244dc46fb12f2cefo3e03";
 
 function searchCity(city) {
-  var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=".concat(city, "&appid=").concat(apiKey, "&units=metric");
+  var apiUrl = "https://api.shecodes.io/weather/v1/current?query=".concat(city, "&key=").concat(apiKey);
+  console.log(apiUrl);
   axios.get(apiUrl).then(showWeather);
 }
 
+function formatDay(timestamp) {
+  var date = new Date(timestamp * 1000);
+  var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  var day = days[date.getDay()];
+  return day;
+}
+
+function displayForecast(response) {
+  var forecastElement = document.getElementById("forecast");
+  var forecast = response.data.daily;
+  var forecastHtml = "<div>";
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHtml += "\n  <ul>\n    <li class=\"forecast-day\">".concat(formatDay(forecastDay.time), "</li>\n    <li class=\"forecast-icon\"><img src=\"http://shecodes-assets.s3.amazonaws.com/api/weather/icons/").concat(forecastDay.condition.icon, ".png\" alt=\"forecastDay.condition.description\">\n    </li>\n    <li class=\"forecast-temperature\">\n      <span class=\"min-temperature\">").concat(Math.round(forecastDay.temperature.minimum), "</span>\xB0\n      <span class=\"max-temperature\">").concat(Math.round(forecastDay.temperature.maximum), "</span>\xB0\n    </li>\n  </ul>\n  ");
+    }
+  });
+  forecastHtml += "</div>";
+  forecastElement.innerHTML = forecastHtml;
+}
+
+function getForecast(coordinates) {
+  var apiUrl = "https://api.shecodes.io/weather/v1/forecast?lon=".concat(coordinates.longitude, "&lat=").concat(coordinates.latitude, "&key=").concat(apiKey);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
-  temperature = Math.round(response.data.main.temp);
+  document.querySelector("#city").innerHTML = response.data.city;
+  temperature = Math.round(response.data.temperature.current);
   document.querySelector("#temperature").innerHTML = temperature;
-  var icon = response.data.weather[0].icon;
-  document.querySelector("#weather-icon").innerHTML = "<img src=\"https://openweathermap.org/img/wn/".concat(icon, "@2x.png\" alt=\"\" id=\"weather-icon\">");
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  var icon = response.data.condition.icon;
+  var description = response.data.condition.description;
+  document.querySelector("#weather-icon").innerHTML = "<img src=\"http://shecodes-assets.s3.amazonaws.com/api/weather/icons/".concat(icon, ".png\" alt=\"").concat(description, "\" id=\"weather-icon\">");
+  document.querySelector("#humidity").innerHTML = response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
-  document.querySelector("#description").innerHTML = response.data.weather[0].description;
+  document.querySelector("#description").innerHTML = description;
+  getForecast(response.data.coordinates);
 }
 
 function showCity(event) {
@@ -26,7 +54,7 @@ function showCity(event) {
 
 function getThisPosition() {
   navigator.geolocation.getCurrentPosition(function (position) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=".concat(position.coords.latitude, "&lon=").concat(position.coords.longitude, "&appid=").concat(apiKey, "&units=metric");
+    var apiUrl = "https://api.shecodes.io/weather/v1/current?lon=".concat(position.coords.longitude, "&lat=").concat(position.coords.latitude, "&key=").concat(apiKey, "&units=metric");
     axios.get(apiUrl).then(showWeather);
   });
 }
