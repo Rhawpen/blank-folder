@@ -132,21 +132,15 @@ input{
   font-weight: 400;
 }
 #forecast{
-  display: block;
-  margin: 0 auto;
-  border-radius: 10px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
-#forecast > div > ul{
+#forecast > div{
   display: flex;
+  justify-content: space-between;
 }
-#forecast > div > ul > li{
-  flex: 1;
-}
+
 .forecast-icon img{
   width: 50px;
-  position: relative;
-  bottom: 10px;
 }
 @media screen and (min-width: 500px) {
   .container {
@@ -208,6 +202,10 @@ input{
   #forecast{
     margin-top: 120px;
   }
+  #forecast > div{
+  flex-direction: column;
+  justify-content: flex-start;
+}
   #forecast > div > ul{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -215,6 +213,10 @@ input{
   }
   #forecast > div > ul > li{
     margin-top: 10px;
-    border-bottom: 2px solid #EC6E4C;
+    border-bottom: 2px solid black;
   }
+  .forecast-icon img{
+    position: relative;
+    bottom: 10px;
+}
 }
